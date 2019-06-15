@@ -21,7 +21,8 @@ RUN yum install -y httpd && \
 RUN chgrp -R 0 /etc/httpd/logs/ && \
     chgrp -R 0 /run/httpd/ && \
     chmod -R g=u /etc/httpd/logs/ /run/httpd/ && \
-    sed -ri -e '/^Listen 80/c\Listen 8080' /etc/httpd/conf/httpd.conf
+    sed -ri -e '/^Listen 80/c\Listen 8080' /etc/httpd/conf/httpd.conf && \
+    echo Hello world > /var/www/html/index.html
 
 ONBUILD COPY ./src/ /var/www/html/
 
