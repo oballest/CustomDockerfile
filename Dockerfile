@@ -1,4 +1,4 @@
-FROM centos:7.3
+FROM centos7
 
 LABEL Component="httpd" \ 
       Name="do288/httpd-parent" \
