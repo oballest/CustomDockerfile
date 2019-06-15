@@ -14,13 +14,13 @@ LABEL io.k8s.description="A basic Apache HTTP Server image with ONBUILD instruct
       io.openshift.tags="apache, httpd"
 
 
-RUN yum update -y && \
-    yum install -y httpd
+RUN yum install -y httpd && \
+    yum clean all --noplugins -y
 
 
 RUN chgrp -R 0 /etc/httpd/logs/ && \
     chgrp -R 0 /run/httpd/ && \
-    chomod -R g=u /etc/httpd/logs/ /run/httpd/ && \
+    chmod -R g=u /etc/httpd/logs/ /run/httpd/ && \
     sed -ri -e '/^Listen 80/c\Listen 8080' /etc/httpd/conf/httpd.conf
 
 ONBUILD COPY ./src/ /var/www/html/
