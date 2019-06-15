@@ -20,7 +20,7 @@ RUN yum update -y && \
 
 RUN chmod 755 /etc/httpd/logs/ && \
     chmod 755 /run/httpd/ && \
-    sed -ri -e '/^Listen 80/c\Listen ${PORT}' /etc/httpd/conf/httpd.conf
+    sed -ri -e '/^Listen 80/c\Listen 8080' /etc/httpd/conf/httpd.conf
 
 ONBUILD COPY ./src/ /var/www/html/
 
