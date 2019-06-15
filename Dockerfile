@@ -1,4 +1,4 @@
-FROM centos:7.2.1511
+FROM centos:7.3.1611
 
 LABEL Component="httpd" \ 
       Name="do288/httpd-parent" \
@@ -18,7 +18,8 @@ RUN yum update -y && \
     yum install -y httpd
 
 
-RUN chmod 755 /etc/httpd/logs/
+RUN chmod 755 /etc/httpd/logs/ && \
+    chmod 755 /run/httpd/
 
 
 EXPOSE 80
