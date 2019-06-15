@@ -18,13 +18,16 @@ RUN yum update -y && \
     yum install -y httpd
 
 
-RUN chmod 755 /etc/httpd/logs/ && \
-    chmod 755 /run/httpd/ && \
+RUN chgrp -R 0 /etc/httpd/logs/ && \
+    chgrp -R 0 /run/httpd/ && \
+    chomod -R g=u /etc/httpd/logs/ /run/httpd/ && \
     sed -ri -e '/^Listen 80/c\Listen 8080' /etc/httpd/conf/httpd.conf
 
 ONBUILD COPY ./src/ /var/www/html/
 
 EXPOSE 8080
+
+USER 1001
 
 CMD ["httpd","-D","FOREGROUND"] 
 
