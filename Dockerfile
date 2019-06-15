@@ -1,6 +1,6 @@
 FROM rhel7:7.3
 
-LABEL Component="httpd" \ 2
+LABEL Component="httpd" \ 
       Name="do288/httpd-parent" \
       Version="1.0" \
       Release="1"
